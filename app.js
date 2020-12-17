@@ -48,6 +48,23 @@ function generatePictures(data) {
     });
 }
 
+/*
+function generateVideos(data) {
+    data.videos.forEach(video => {
+        const galleryImg = document.createElement("div");
+        galleryImg.classList.add("gallery-img");
+        galleryImg.innerHTML = `
+            <div class="gallery-info">
+            <p>${video.user.name}</p>
+            <a href=${video.url}>Play</a>
+            </div>
+            <img src=${video.image}></img>
+            `;
+        gallery.appendChild(galleryImg);
+    });
+}
+*/
+
 async function curatedPhotos() {
     fetchLink = "https://api.pexels.com/v1/curated?per_page=15&page=1";
     const data = await fetchApi(fetchLink);
@@ -61,6 +78,18 @@ async function searchPhotos(query) {
     const data = await fetchApi(fetchLink);
     generatePictures(data);
 }
+
+
+/*
+
+async function curatedVideos() {
+    fetchLink = "https://api.pexels.com/videos/popular";
+    const data = await fetchApi(fetchLink);
+
+    generateVideos(data);
+}
+
+*/
 
 function clear() {
     gallery.innerHTML = "";
@@ -79,3 +108,4 @@ async function loadMore() {
 }
 
 curatedPhotos();
+//curatedVideos();
